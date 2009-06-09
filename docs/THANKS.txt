@@ -1,13 +1,13 @@
-THANKS
+Thanks
 ======
 
-  - Daniel Widerin
-  - Patrick Griffiths
-  - Dan Webb
-  - Joel Birch
-  
-  - jQuery
-  - http://plugins.jquery.com/project/Superfish
-    
-    
+- Daniel Widerin
+- Patrick Griffiths
+- Dan Webb
+- Joel Birch
+
+- jQuery
+- http://plugins.jquery.com/project/Superfish
+
+
 
