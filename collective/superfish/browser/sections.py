@@ -54,7 +54,6 @@ class SuperFishViewlet(common.ViewletBase):
     # monkey patch this if you want to use collective.superfish together with 
     # global_sections, need another start level or menu depth.
     menu_id = 'portal-globalnav'
-    menu_start = 1
     menu_depth = 2
     
     # this template is used to generate a single menu item.
@@ -96,7 +95,7 @@ class SuperFishViewlet(common.ViewletBase):
            Python code should speedup rendering."""
         
         def submenu(items, menu_id=None, menu_level=0, menu_classnames=''):
-            
+            # unsure this is needed any more...
             #if self.menu_depth>0 and menu_level>self.menu_depth:
             #    # finish if we reach the maximum level
             #    return 
@@ -148,6 +147,6 @@ class SuperFishViewlet(common.ViewletBase):
                            menu_id=u"portal-globalnav",
                            menu_classnames=u"sf-menu")
     
-    #@ram.cache(_render_sections_cachekey)
+    @ram.cache(_render_sections_cachekey)
     def render(self):
         return xhtml_compress(self.index())
