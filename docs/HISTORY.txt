@@ -1,7 +1,10 @@
 HISTORY
 =======
 
-0.1 - Unreleased
+0.2 - Unreleased
+----------------
+
+0.1 - 2009-06-09
 ----------------
 
 - Initial import and idea  [saily]
