@@ -6,8 +6,16 @@ Thanks
 - Dan Webb
 - Joel Birch
 
+Links
+=====
+
+- Suckerfish Dropdowns 
+  http://www.alistapart.com/articles/dropdowns
+- Superfish 
+  http://users.tpg.com.au/j_birch/plugins/superfish
+- hoverIntent
+  http://cherne.net/brian/resources/jquery.hoverIntent.html
+- jQuery plugin
+  http://plugins.jquery.com/project/Superfish
 - jQuery
-- http://plugins.jquery.com/project/Superfish
-
-
-
+  http://jquery.com
