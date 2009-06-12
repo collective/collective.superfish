@@ -1,8 +1,14 @@
 History
 =======
 
-0.2 - Unreleased
+0.3 - Unreleased
 ----------------
+
+0.2 - 2009-06-12
+----------------
+
+- Moved from full to safe compression for javascript files.
+  [saily]
 
 - Removed unused class attributes for SuperFishViewlet.
   [saily]
