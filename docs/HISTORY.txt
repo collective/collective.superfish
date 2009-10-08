@@ -4,6 +4,9 @@ History
 0.3 - Unreleased
 ----------------
 
+- Made id-generation more resistend against duplicated id's. We now use
+  normalized urls to generate the item id.  [saily]
+
 0.2 - 2009-06-12
 ----------------
 
@@ -12,7 +15,7 @@ History
 
 - Removed unused class attributes for SuperFishViewlet.
   [saily]
-  
+
 - Added caching to improve rendering performance.
   [saily]
 
