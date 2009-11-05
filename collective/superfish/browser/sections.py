@@ -142,7 +142,8 @@ class SuperFishViewlet(common.ViewletBase):
                 id=item_id,
                 level=menu_level,
                 title=safe_unicode(item['item'].Title),
-                description=safe_unicode(item['item'].Description),
+                description=safe_unicode(item['item'].Description).replace(
+                    '"', '&quot;'),
                 url=item['item'].getURL(),
                 classnames=len(classes) and
                     u' class="%s"' % (" ".join(classes)) or u"",

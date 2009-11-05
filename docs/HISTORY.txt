@@ -4,6 +4,9 @@ History
 0.3 - Unreleased
 ----------------
 
+- Replace " with &quot; to keep valid HTML if description contains quotes.
+  [saily]
+
 - Made id-generation more resistend against duplicated id's. We now use
   normalized urls to generate the item id.  [saily]
 
