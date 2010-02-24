@@ -15,6 +15,19 @@ History
 
 - added some documentation targeted at integrators [fRiSi]
 
+- don't render superfish_init.js with ``inline=True`` since this leads to
+  strange errors in
+  Products.ResourceRegistries-2.0b2-py2.6.egg/Products/ResourceRegistries/browser/scripts.pt
+  eg when adding a `StaticText Portlet`
+
+  ``AttributeError: 'DirContainedFileResource5' object has no attribute 'POST'``
+
+  according to the `resourceregistry documentation`_ it's better to set inline to `False`
+  in any case.
+
+  .. _`resourceregistry documentation`: http://plone.org/documentation/kb/working-with-resourceregistries/registry-entry-parameters
+
+
 0.2 - 2009-06-12
 ----------------
 
