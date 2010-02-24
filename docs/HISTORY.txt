@@ -7,8 +7,13 @@ History
 - Replace " with &quot; to keep valid HTML if description contains quotes.
   [saily]
 
-- Made id-generation more resistend against duplicated id's. We now use
+- Made id-generation more resistent against duplicated id's. We now use
   normalized urls to generate the item id.  [saily]
+
+- added support to include portal_tabs in the superfish navigation by setting
+  ``ADD_PORTAL_TABS = True`` in subclasses [fRiSi]
+
+- added some documentation targeted at integrators [fRiSi]
 
 0.2 - 2009-06-12
 ----------------

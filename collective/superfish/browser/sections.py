@@ -15,11 +15,11 @@ from Products.CMFPlone.browser.navtree import SitemapQueryBuilder
 
 from plone.memoize import ram
 from plone.memoize.compress import xhtml_compress
+from zope.i18n import translate
 
 
 def _render_sections_cachekey(fun, self):
     key = StringIO()
-
     print >> key, self.__class__
     print >> key, getToolByName(aq_inner(self.context), 'portal_url')()
     print >> key, self.request.get('LANGUAGE', 'de')
@@ -36,6 +36,22 @@ def _render_sections_cachekey(fun, self):
     return key.getvalue()
 
 
+class VirtualCatalogBrain(object):
+    """wraps an portal_action actioninfo into a fake catalog brain that can
+    be used as item in the dictiontary returned by plone.app.layout.navigation.navtree.buildFolderTree
+    """
+
+    def __init__(self, action):
+        self.url = action['url']
+        self.Title = action['title']
+        self.Description = action['description']
+        self.exclude_from_nav = not (action['available'] and action['allowed'])
+        self.id = "action-%s" % action['id'].replace('_','-')
+
+    def getURL(self):
+        return self.url
+
+
 class SuperFishQueryBuilder(SitemapQueryBuilder):
     """Build a folder tree query suitable for a dropdownmenu
     """
@@ -45,19 +61,20 @@ class SuperFishQueryBuilder(SitemapQueryBuilder):
 
         portal_state = getMultiAdapter(
             (context, context.REQUEST), name=u'plone_portal_state')
+        root = portal_state.navigation_root_path()
 
-        self.query['path']['query'] = portal_state.navigation_root_path()
+        self.query['path']['query'] = root
 
 
 class SuperFishViewlet(common.ViewletBase):
 
     index = ViewPageTemplateFile('sections.pt')
-    portal_tabs = []
 
     # monkey patch this if you want to use collective.superfish together with
     # global_sections, need another start level or menu depth.
     menu_id = 'portal-globalnav'
     menu_depth = 2
+    ADD_PORTAL_TABS = False
 
     # this template is used to generate a single menu item.
     _menu_item = u"""
@@ -86,12 +103,39 @@ class SuperFishViewlet(common.ViewletBase):
         # highspeed navtree generation, and use it's caching features too.
         query = SuperFishQueryBuilder(self.context)()
         query['path']['depth'] = self.menu_depth
+        query['path']['query'] = self.navigation_root_path
 
         # no special strategy needed, so i kicked the INavtreeStrategy lookup.
         return buildFolderTree(self.context, obj=self.context, query=query)
 
     def update(self):
         self.data = self._build_navtree()
+
+        if self.ADD_PORTAL_TABS:
+            self._addActionsToData()
+
+    def _actions(self):
+        context = aq_inner(self.context)
+        context_state = getMultiAdapter((context, self.request),
+                                        name=u'plone_context_state')
+        actions = context_state.actions('portal_tabs')
+
+        return actions or []
+
+    def _addActionsToData(self):
+        """inject the portal_actions before the rest of the navigation
+        """
+        actions = self._actions()
+        actions.reverse()
+
+        #XXX maybe we can use some ideas of CMFPlone.browser.navigation.CatalogNavigationTabs
+        #to mark currentItems (or GlobalSectionsViewlet in plone.app.layout.viewlets.common)
+        for actionInfo in actions:
+            self.data['children'].insert(0,
+                {'item': VirtualCatalogBrain(actionInfo),
+                 'depth': 1, 'children': [],
+                 'currentParent': False, 'currentItem': False})
+
 
     def portal_tabs(self):
         """We do not want to use the template-code any more.
@@ -131,19 +175,29 @@ class SuperFishViewlet(common.ViewletBase):
 
             if first: classes.append('firstItem')
             if last: classes.append('lastItem')
-            if self.current_url.startswith(item['item'].getURL()):
+            if item['currentParent']:
                 classes.append('navTreeItemInPath')
 
-            item_id = item['item'].getURL()[len(self.site_url):]
+            brain = item['item']
+
+            if type(brain) == VirtualCatalogBrain:
+                #translate our portal_actions and use their id instead of the url
+                title = translate(brain.Title, context=self.request)
+                desc = translate(brain.Description, context=self.request)
+                item_id = brain.id
+            else:
+                title = safe_unicode(brain.Title)
+                desc = safe_unicode(brain.Description)
+                item_id = brain.getURL()[len(self.site_url):]
+
             item_id = item_id.strip('/').replace('/', '-')
 
             return self._menu_item % dict(
                 menu_id=self.menu_id,
                 id=item_id,
                 level=menu_level,
-                title=safe_unicode(item['item'].Title),
-                description=safe_unicode(item['item'].Description).replace(
-                    '"', '&quot;'),
+                title=title,
+                description=desc.replace('"', '&quot;'),
                 url=item['item'].getURL(),
                 classnames=len(classes) and
                     u' class="%s"' % (" ".join(classes)) or u"",

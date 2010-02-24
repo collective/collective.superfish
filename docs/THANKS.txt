@@ -5,13 +5,14 @@ Thanks
 - Patrick Griffiths
 - Dan Webb
 - Joel Birch
+- Harald Friessnegger (fRiSi)
 
 Links
 =====
 
-- Suckerfish Dropdowns 
+- Suckerfish Dropdowns
   http://www.alistapart.com/articles/dropdowns
-- Superfish 
+- Superfish
   http://users.tpg.com.au/j_birch/plugins/superfish
 - hoverIntent
   http://cherne.net/brian/resources/jquery.hoverIntent.html
