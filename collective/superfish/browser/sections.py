@@ -14,7 +14,6 @@ from Products.CMFPlone.utils import safe_unicode
 from Products.CMFPlone.browser.navtree import SitemapQueryBuilder
 
 from plone.memoize import ram
-from plone.memoize.compress import xhtml_compress
 from zope.i18n import translate
 
 
@@ -209,6 +208,6 @@ class SuperFishViewlet(common.ViewletBase):
             return submenu(self.data['children'], menu_id=self.menu_id,
                                                   menu_classnames=u"sf-menu")
 
-    @ram.cache(_render_sections_cachekey)
+    #@ram.cache(_render_sections_cachekey)
     def render(self):
-        return xhtml_compress(self.index())
+        return self.index()
