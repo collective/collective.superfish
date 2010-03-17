@@ -15,6 +15,7 @@
         manager="plone.app.layout.viewlets.interfaces.IPortalHeader"
         class=".sections.SuperFishViewlet"
         permission="zope2.View"
+        layer=".interfaces.ISuperfishLayer"
         />
 
 </configure>
