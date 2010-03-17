@@ -1,7 +1,10 @@
 History
 =======
 
-0.3 - Unreleased
+0.4 - Unreleased
+----------------
+
+0.3 - 2010-03-17
 ----------------
 
 - Replace " with &quot; to keep valid HTML if description contains quotes.
@@ -27,6 +30,16 @@ History
 
   .. _`resourceregistry documentation`: http://plone.org/documentation/kb/working-with-resourceregistries/registry-entry-parameters
 
+- Removed caching after some discussions with fRiSi.
+  We left the code but disabled it by default, enable it again uncommenting
+  the ram.cache line::
+
+    #@ram.cache(_render_sections_cachekey)
+    def render(self):
+        return self.index()
+
+- Displaying superfish menu only when installed in portal_quickinstaller by
+  adding a superfish-browserlayer through browserlayer.xml file.  [saily]
 
 0.2 - 2009-06-12
 ----------------
