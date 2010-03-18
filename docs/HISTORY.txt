@@ -41,6 +41,10 @@ History
 - Displaying superfish menu only when installed in portal_quickinstaller by
   adding a superfish-browserlayer through browserlayer.xml file.  [saily]
 
+- Changed default values for 'interval' and 'timeout' of hoverIntent which
+  controls the show and hide process of the submenu. Read more about
+  configuration of hoverIntent here: http://cherne.net/brian/resources/jquery.hoverIntent.html
+
 0.2 - 2009-06-12
 ----------------
 
