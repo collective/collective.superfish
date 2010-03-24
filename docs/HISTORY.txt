@@ -1,6 +1,13 @@
 History
 =======
 
+after 0.3
+---------
+
+- don't use version in metadata.xml for the package version in setup.py.
+  the metadata version this is meant to reflect the version of the GS profile
+  and must not be mixed up with the package version.
+
 0.3 - 2010-03-17
 ----------------
 
