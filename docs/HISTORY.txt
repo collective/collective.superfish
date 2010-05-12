@@ -1,7 +1,10 @@
 History
 =======
 
-0.4 - Unreleased
+0.5 - Unreleased
+----------------
+
+0.4 - 2010-05-12
 ----------------
 
 - removed desc.replace(...) and added a custom entities method to fix #1.
