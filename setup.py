@@ -8,7 +8,7 @@ def read(*pathnames):
     return open(os.path.join(os.path.dirname(__file__), *pathnames)).read()
 
 setup(name='collective.superfish',
-      version='0.4-dev',
+      version='0.5-dev',
       description="A suckerfish/superfish integration into plone",
       long_description='\n'.join([
         read('docs', 'README.txt'),

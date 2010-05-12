@@ -37,7 +37,8 @@ def _render_sections_cachekey(fun, self):
 
 class VirtualCatalogBrain(object):
     """wraps an portal_action actioninfo into a fake catalog brain that can
-    be used as item in the dictiontary returned by plone.app.layout.navigation.navtree.buildFolderTree
+    be used as item in the dictiontary returned by
+    plone.app.layout.navigation.navtree.buildFolderTree
     """
 
     def __init__(self, action):
@@ -136,18 +137,20 @@ class SuperFishViewlet(common.ViewletBase):
         actions = self._actions()
         actions.reverse()
 
-        #XXX maybe we can use some ideas of CMFPlone.browser.navigation.CatalogNavigationTabs
-        #to mark currentItems (or GlobalSectionsViewlet in plone.app.layout.viewlets.common)
+        # XXX maybe we can use some ideas of
+        # CMFPlone.browser.navigation.CatalogNavigationTabs
+        # to mark currentItems (or GlobalSectionsViewlet in
+        # plone.app.layout.viewlets.common)
         for actionInfo in actions:
             self.data['children'].insert(0,
                 {'item': VirtualCatalogBrain(actionInfo),
                  'depth': 1, 'children': [],
                  'currentParent': False, 'currentItem': False})
 
-    @staticmethod
-    def html_escape(text):
+    def html_escape(self, text):
         """Produce entities within text."""
-        return "".join(html_escape_table.get(c,c) for c in text)
+        # XXX maybe we should use a static method here
+        return "".join(self.html_escape_table.get(c,c) for c in text)
 
     def portal_tabs(self):
         """We do not want to use the template-code any more.
@@ -193,7 +196,8 @@ class SuperFishViewlet(common.ViewletBase):
             brain = item['item']
 
             if type(brain) == VirtualCatalogBrain:
-                # translate our portal_actions and use their id instead of the url
+                # translate our portal_actions and use their id instead of the
+                # url
                 title = translate(brain.Title, context=self.request)
                 desc = translate(brain.Description, context=self.request)
                 item_id = brain.id
