@@ -73,6 +73,15 @@ class SuperFishViewlet(common.ViewletBase):
     # global_sections, need another start level or menu depth.
     menu_id = 'portal-globalnav'
     menu_depth = 2
+
+    # See http://wiki.python.org/moin/EscapingHtml
+    html_escape_table = {
+        "&": "&amp;",
+        '"': "&quot;",
+        "'": "&apos;",
+        ">": "&gt;",
+        "<": "&lt;",
+    }
     ADD_PORTAL_TABS = False
 
     # this template is used to generate a single menu item.
@@ -135,6 +144,10 @@ class SuperFishViewlet(common.ViewletBase):
                  'depth': 1, 'children': [],
                  'currentParent': False, 'currentItem': False})
 
+    @staticmethod
+    def html_escape(text):
+        """Produce entities within text."""
+        return "".join(html_escape_table.get(c,c) for c in text)
 
     def portal_tabs(self):
         """We do not want to use the template-code any more.
@@ -180,7 +193,7 @@ class SuperFishViewlet(common.ViewletBase):
             brain = item['item']
 
             if type(brain) == VirtualCatalogBrain:
-                #translate our portal_actions and use their id instead of the url
+                # translate our portal_actions and use their id instead of the url
                 title = translate(brain.Title, context=self.request)
                 desc = translate(brain.Description, context=self.request)
                 item_id = brain.id
@@ -195,8 +208,8 @@ class SuperFishViewlet(common.ViewletBase):
                 menu_id=self.menu_id,
                 id=item_id,
                 level=menu_level,
-                title=title,
-                description=desc.replace('"', '&quot;'),
+                title=self.html_escape(title),
+                description=self.html_escape(desc),
                 url=item['item'].getURL(),
                 classnames=len(classes) and
                     u' class="%s"' % (" ".join(classes)) or u"",

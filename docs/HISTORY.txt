@@ -1,12 +1,15 @@
 History
 =======
 
-after 0.3
----------
+0.4 - Unreleased
+----------------
+
+- removed desc.replace(...) and added a custom entities method to fix #1.
+  [saily]
 
 - don't use version in metadata.xml for the package version in setup.py.
   the metadata version this is meant to reflect the version of the GS profile
-  and must not be mixed up with the package version.
+  and must not be mixed up with the package version.  [fRiSi]
 
 0.3 - 2010-03-17
 ----------------
