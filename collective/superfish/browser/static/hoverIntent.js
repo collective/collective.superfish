@@ -1,14 +1,40 @@
-(function($){
-    /* hoverIntent by Brian Cherne */
+/**
+* hoverIntent is similar to jQuery's built-in "hover" function except that
+* instead of firing the onMouseOver event immediately, hoverIntent checks
+* to see if the user's mouse has slowed down (beneath the sensitivity
+* threshold) before firing the onMouseOver event.
+*
+* hoverIntent r5 // 2007.03.27 // jQuery 1.1.2+
+* <http://cherne.net/brian/resources/jquery.hoverIntent.html>
+*
+* hoverIntent is currently available for use in all personal or commercial
+* projects under both MIT and GPL licenses. This means that you can choose
+* the license that best suits your project, and use it accordingly.
+*
+* // basic usage (just like .hover) receives onMouseOver and onMouseOut functions
+* $("ul li").hoverIntent( showNav , hideNav );
+*
+* // advanced usage receives configuration object only
+* $("ul li").hoverIntent({
+*   sensitivity: 7, // number = sensitivity threshold (must be 1 or higher)
+*   interval: 100,   // number = milliseconds of polling interval
+*   over: showNav,  // function = onMouseOver callback (required)
+*   timeout: 0,   // number = milliseconds delay before onMouseOut function call
+*   out: hideNav    // function = onMouseOut callback (required)
+* });
+*
+* @param  f  onMouseOver function || An object with configuration options
+* @param  g  onMouseOut function  || Nothing (use configuration options object)
+* @author    Brian Cherne <brian@cherne.net>
+*/
+jQuery(function($) {
     $.fn.hoverIntent = function(f,g) {
         // default configuration options
         var cfg = {
-             // Read more detailed information about the config options here:
-             // http://cherne.net/brian/resources/jquery.hoverIntent.html
             sensitivity: 7,
-            interval: 0,        // t in ms until submenu appears
-            timeout: 100        // t in ms until it disappears again when
-                                // mouse leaves the submenu
+            interval: 0,  // t in ms until submenu appears
+            timeout: 100  // t in ms until it disappears again when
+                          // mouse leaves the submenu
         };
         // override configuration options with user supplied object
         cfg = $.extend(cfg, g ? { over: f, out: g } : f );
@@ -35,7 +61,8 @@
                 return cfg.over.apply(ob,[ev]);
             } else {
                 // set previous coordinates for next time
-                pX = cX; pY = cY;
+                pX = cX; pY = cY;   Brian Cherne <brian@cherne.net>
+*/
                 // use self-calling timeout, guarantees intervals are spaced out properly (avoids JavaScript timer bugs)
                 ob.hoverIntent_t = setTimeout( function(){compare(ev, ob);} , cfg.interval );
             }
@@ -83,5 +110,4 @@
         // bind the function to the two event listeners
         return this.mouseover(handleHover).mouseout(handleHover);
     };
-
-})(jQuery);
+});

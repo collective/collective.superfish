@@ -4,6 +4,13 @@ History
 0.5 - Unreleased
 ----------------
 
+-  use `official hoverIntent.js`_ with docstring and versioninfo
+   and replaced ``(function($){})(jQuery);`` with
+   ``jQuery(function($){});`` syntax so the script does not conflict with
+   collective.carousel (when both are merged to the same file by portal_javascript).
+
+   .. _`official hoverIntent.js`: http://cherne.net/brian/resources/jquery.hoverIntent.js
+
 0.4 - 2010-05-12
 ----------------
 
