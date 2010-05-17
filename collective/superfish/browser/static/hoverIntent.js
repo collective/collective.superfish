@@ -61,8 +61,7 @@ jQuery(function($) {
                 return cfg.over.apply(ob,[ev]);
             } else {
                 // set previous coordinates for next time
-                pX = cX; pY = cY;   Brian Cherne <brian@cherne.net>
-*/
+                pX = cX; pY = cY;
                 // use self-calling timeout, guarantees intervals are spaced out properly (avoids JavaScript timer bugs)
                 ob.hoverIntent_t = setTimeout( function(){compare(ev, ob);} , cfg.interval );
             }
