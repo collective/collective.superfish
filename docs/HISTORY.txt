@@ -1,6 +1,11 @@
 History
 =======
 
+after 0.5
+---------
+
+- fixed dropdown for IE7 and IE8
+
 0.5 - 2010-06-17
 ----------------
 
