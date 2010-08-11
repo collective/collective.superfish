@@ -79,7 +79,7 @@ class SuperFishViewlet(common.ViewletBase):
     html_escape_table = {
         "&": "&amp;",
         '"': "&quot;",
-        "'": "&apos;",
+        "'": "&#39;",
         ">": "&gt;",
         "<": "&lt;",
     }

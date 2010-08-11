@@ -5,6 +5,13 @@ after 0.5
 ---------
 
 - fixed dropdown for IE7 and IE8
+  [fRiSi]
+
+- replace `'` with ``&#39;`` instead of ``&apos;`` since
+  IE7/8 can't handle this xhtml entity
+  (http://inthemaze.net/post/2008/04/08/46-ie7-and-apos)
+  [fRiSi]
+
 
 0.5 - 2010-06-17
 ----------------
