@@ -11,7 +11,7 @@ setup(name='collective.superfish',
       version='0.6',
       description="A suckerfish/superfish integration into plone",
       long_description='\n'.join([
-        read('docs', 'README.txt'),
+        read('README.rst'),
         read('docs', 'TODO.txt'),
         read('docs', 'HISTORY.txt'),
         read('docs', 'THANKS.txt'),
