@@ -37,5 +37,8 @@ setup(name='collective.superfish',
       ],
       entry_points="""
       # -*- Entry points: -*-
+
+      [z3c.autoinclude.plugin]
+      target = plone
       """,
       )
