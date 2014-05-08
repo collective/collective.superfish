@@ -6,8 +6,6 @@
     
     <include package=".browser" />
     
-    <five:registerPackage package="." initialize=".initialize" />
-    
     <genericsetup:registerProfile
         name="default"
         title="collective.superfish"
