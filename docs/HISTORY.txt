@@ -1,6 +1,13 @@
 History
 =======
 
+dev
+---
+
+- Update superfish.js from 1.4.8 to 1.7.3
+  and hoverIntent.js from r5 to r7
+  [fRiSi]
+  
 0.6 - 2010-08-11
 ----------------
 
