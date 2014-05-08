@@ -7,7 +7,23 @@ dev
 - Update superfish.js from 1.4.8 to 1.7.3
   and hoverIntent.js from r5 to r7
   [fRiSi]
+
+- Add default formatting for superfish menu based on the `DEMO SKIN`
+  in the `superfish default css
+  <https://github.com/joeldbirch/superfish/blob/master/dist/css/superfish.css>`_
   
+  Superfish Menu Layout changed from
+  
+  ``<li><span class="selected"><a .../></span></li>`` to
+  
+  ``<li class="selected"><a .../></li>``
+  
+  since javascript could not handle the
+  additional span tag for setting the `.sf-with-ul` class.
+  [fRiSi]
+
+    
+
 0.6 - 2010-08-11
 ----------------
 

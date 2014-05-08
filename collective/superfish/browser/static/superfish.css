@@ -35,7 +35,6 @@
 
 
 
-
 /*** arrows (for all except IE7) **/
 .sf-arrows .sf-with-ul {
     padding-right: 2.5em;
@@ -75,10 +74,6 @@
 }
 
 
-
-
-
-
 /*** Plone specific styling ***/
 
 
@@ -90,12 +85,20 @@
 
 #portal-globalnav.sf-menu li a {
     display:block;
+    min-width: 0;
 }
 
 #portal-globalnav ul li a {
     min-width: 0;
     border-right: none;
+    white-space: inherit;
 } 
+
+#portal-globalnav li.navTreeItemInPath a {
+    background: none repeat scroll 0 0 #205C90;
+    color: #FFFFFF;
+}
+
 /* @end */
 
 
@@ -125,20 +128,3 @@
 }
 
 /* @end */
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
