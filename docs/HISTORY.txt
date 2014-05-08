@@ -1,16 +1,19 @@
 History
 =======
 
-dev
----
+1.0 - 2014-05-08
+----------------
 
 - Update superfish.js from 1.4.8 to 1.7.3
   and hoverIntent.js from r5 to r7
   [fRiSi]
+  
+  .. ATTENTION:: This update breaks css compatibility with the previous version!
 
 - Add default formatting for superfish menu based on the `DEMO SKIN`
   in the `superfish default css
   <https://github.com/joeldbirch/superfish/blob/master/dist/css/superfish.css>`_
+  to make it fit the `Sunburst Theme`
   
   Superfish Menu Layout changed from
   
@@ -22,7 +25,6 @@ dev
   additional span tag for setting the `.sf-with-ul` class.
   [fRiSi]
 
-    
 
 0.6 - 2010-08-11
 ----------------

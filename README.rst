@@ -7,9 +7,12 @@ collective.superfish
 What is it?
 ===========
 
-collective.superfish is an suckerfish integration into Plone. Suckerfish is a
-really nice solution for dropdown menus using css, valid xhtml and javascript.
-http://www.alistapart.com/articles/dropdowns/
+collective.superfish integrates the `jQuery Superfish plugin`_ into Plone.
+
+Superfish is a really nice solution for dropdown menus using css, valid xhtml
+and JavaScript which degrades gracefully if JavaScript is not available.
+
+.. _`jQuery Superfish plugin`: http://users.tpg.com.au/j_birch/plugins/superfish/
 
 
 How do i use it?
@@ -28,6 +31,13 @@ in viewlets.xml somehow like this::
     </order>
 
 
+Customization
+=============
+
+
+Add portal_actions
+------------------
+
 By default, `collecive.superfish` does not include portal_actions in the menu.
 To activate them, subclass the viewlet::
 
@@ -45,5 +55,29 @@ and register it for your skin::
         class=".viewlets.SuperFishViewlet"
         permission="zope2.View"
         layer=".interfaces.IThemeSpecific"/>
+
+
+Do not show arrows
+------------------
+
+To not show the arrows for menuitems with subitems,
+customize the Javascript initialization::
+
+
+    jQuery('ul.sf-menu').superfish({
+        cssArrows: false
+    });
+
+See http://users.tpg.com.au/j_birch/plugins/superfish/options/ for a complete
+list of available options.
+
+
+CSS Styles
+----------
+
+See the examples provided in the `superfish download
+<https://github.com/joeldbirch/superfish/archive/1.7.4.zip>`_
+
+eg https://github.com/joeldbirch/superfish/tree/1.7.4/examples
 
 

@@ -10,13 +10,15 @@ Thanks
 Links
 =====
 
-- Suckerfish Dropdowns
-  http://www.alistapart.com/articles/dropdowns
+
 - Superfish
   http://users.tpg.com.au/j_birch/plugins/superfish
+
 - hoverIntent
   http://cherne.net/brian/resources/jquery.hoverIntent.html
-- jQuery plugin
-  http://plugins.jquery.com/project/Superfish
+
+- Suckerfish Dropdowns
+  http://www.alistapart.com/articles/dropdowns
+
 - jQuery
   http://jquery.com
