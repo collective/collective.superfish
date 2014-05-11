@@ -5,6 +5,7 @@
     i18n_domain="collective.superfish">
     
     <include package=".browser" />
+    <include package=".upgrades" />
     
     <genericsetup:registerProfile
         name="default"

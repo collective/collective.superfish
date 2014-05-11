@@ -75,9 +75,16 @@ list of available options.
 CSS Styles
 ----------
 
-See the examples provided in the `superfish download
-<https://github.com/joeldbirch/superfish/archive/1.7.4.zip>`_
+By using superfish.css you should have everyting in place to get a working
+superfish navigation.
 
-eg https://github.com/joeldbirch/superfish/tree/1.7.4/examples
+Specific fixes and colors for plone's `Sunburst Theme` can be found in
+superfish-plone.css (you might deactivate these styles for your custom theme
+layer to not need to override these styles)
+
+You might want to have a look at the examples provided in the
+`superfish download <https://github.com/joeldbirch/superfish/archive/1.7.4.zip>`_
+
+eg: https://github.com/joeldbirch/superfish/tree/1.7.4/examples
 
 

@@ -1,4 +1,4 @@
-/*** ESSENTIAL STYLES ***/
+/*** ESSENTIAL STYLES (copied from superfish release) ***/
 .sf-menu, .sf-menu * {
     margin: 0;
     padding: 0;
@@ -35,7 +35,10 @@
 
 
 
-/*** arrows (for all except IE7) **/
+/*** arrows (for all except IE7) 
+ * (copied from superfish release) 
+ **/
+
 .sf-arrows .sf-with-ul {
     padding-right: 2.5em;
     *padding-right: 1em; /* no CSS arrows for IE7 (lack pseudo-elements) */
@@ -74,45 +77,34 @@
 }
 
 
-/*** Plone specific styling ***/
 
 
-/* @group  fixes for the demo skin */
-#portal-globalnav.sf-arrows li a.sf-with-ul {
-    padding-right: 2.5em;
-    *padding-right: 1em; /* no CSS arrows for IE7 (lack pseudo-elements) */
-}
 
+
+/*** fixes/styling for plone **/
+
+
+/* align subnavigation vertically */
 #portal-globalnav.sf-menu li a {
     display:block;
     min-width: 0;
 }
 
-#portal-globalnav ul li a {
-    min-width: 0;
-    border-right: none;
-    white-space: inherit;
-} 
 
-#portal-globalnav li.navTreeItemInPath a {
-    background: none repeat scroll 0 0 #205C90;
-    color: #FFFFFF;
-}
-
-/* @end */
-
-
-
-/* group styles "stolen" from demo skin */
+/* group basic styling "stolen" from demo skin */
 
 .sf-menu li {
-    background: #DDDDDD;
     white-space: nowrap; /* no need for Supersubs plugin */
     *white-space: normal; /* ...unless you support IE7 (let it wrap) */
     -webkit-transition: background .2s;
     transition: background .2s;
 }
 
+
+.sf-menu ul {
+    min-width: 12em; /* allow long menu items to determine submenu width */
+   *width: 12em; /* no auto sub width for IE7, see white-space comment below */
+}
 
 .sf-menu li:hover,
 .sf-menu li.sfHover {
@@ -122,9 +114,7 @@
 }
 
 
-.sf-menu ul {
-    min-width: 12em; /* allow long menu items to determine submenu width */
-   *width: 12em; /* no auto sub width for IE7, see white-space comment below */
-}
-
 /* @end */
+
+
+
