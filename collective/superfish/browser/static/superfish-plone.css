@@ -12,7 +12,7 @@
 #portal-globalnav ul li a {
     min-width: 0;
     border-right: none; 
-    white-space: inherit;
+    white-space: inherit;  /* do not wrap long titles but adapt menu width */
 } 
 
 
