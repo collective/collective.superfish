@@ -15,6 +15,14 @@ and JavaScript which degrades gracefully if JavaScript is not available.
 .. _`jQuery Superfish plugin`: http://users.tpg.com.au/j_birch/plugins/superfish/
 
 
+.. ATTENTION::
+
+    Dropdown currently does not work on iOS devices.
+    The `hoverintent.js` requires jQuery 1.9.1+ and Plone 4.3.3 ships with 1.7.2
+
+    see https://github.com/collective/collective.superfish/issues/1 for
+    workarounds or use 0.X releases
+
 How do i use it?
 ================
 
