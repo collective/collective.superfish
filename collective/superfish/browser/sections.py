@@ -46,7 +46,7 @@ class VirtualCatalogBrain(object):
         self.Title = action['title']
         self.Description = action['description']
         self.exclude_from_nav = not (action['available'] and action['allowed'])
-        self.id = "action-%s" % action['id'].replace('_','-')
+        self.id = "action-%s" % action['id'].replace('_', '-')
 
     def getURL(self):
         return self.url
@@ -87,10 +87,9 @@ class SuperFishViewlet(common.ViewletBase):
 
     # this template is used to generate a single menu item.
     _menu_item = u"""
-    <li id="%(menu_id)s-%(id)s"%(classnames)s><span%(selected)s
-        ><a href="%(url)s" title="%(description)s">
+    <li id="%(menu_id)s-%(id)s"%(classnames)s><a href="%(url)s" title="%(description)s">
             %(title)s
-        </a></span>%(submenu)s </li>"""
+        </a>%(submenu)s </li>"""
 
     # this template is used to generate a menu container
     _submenu_item = u"""\n<ul%(id)s class="%(classname)s">%(menuitems)s</ul>"""
@@ -150,7 +149,7 @@ class SuperFishViewlet(common.ViewletBase):
     def html_escape(self, text):
         """Produce entities within text."""
         # XXX maybe we should use a static method here
-        return "".join(self.html_escape_table.get(c,c) for c in text)
+        return "".join(self.html_escape_table.get(c, c) for c in text)
 
     def portal_tabs(self):
         """We do not want to use the template-code any more.
@@ -173,9 +172,9 @@ class SuperFishViewlet(common.ViewletBase):
                 return ''
 
             for item in items:
-                first = i==0
+                first = i == 0
                 i += 1
-                last = i==len(items)
+                last = i == len(items)
 
                 s.append(menuitem(item, first, last, menu_level))
 
@@ -192,7 +191,8 @@ class SuperFishViewlet(common.ViewletBase):
             if last: classes.append('lastItem')
             if item['currentParent']:
                 classes.append('navTreeItemInPath')
-
+            if item['currentItem']:
+                classes.append('selected')
             brain = item['item']
 
             if type(brain) == VirtualCatalogBrain:
@@ -217,9 +217,8 @@ class SuperFishViewlet(common.ViewletBase):
                 url=item['item'].getURL(),
                 classnames=len(classes) and
                     u' class="%s"' % (" ".join(classes)) or u"",
-                selected=item['currentItem'] and u' class="selected"' or u"",
                 submenu=submenu(item['children'],
-                                menu_level = menu_level + 1) or u"")
+                                menu_level=menu_level + 1) or u"")
 
         if self.data:
             return submenu(self.data['children'], menu_id=self.menu_id,
