@@ -1,4 +1,4 @@
 /* initialise plugins */
-jQuery(function(){
-    jQuery('ul.sf-menu').superfish();
-});
+(function($){
+    $(function() { $('ul.sf-menu').superfish(); });
+}(jQuery));

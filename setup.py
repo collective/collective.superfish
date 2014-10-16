@@ -3,12 +3,13 @@ import os
 from setuptools import setup, find_packages
 from xml.dom.minidom import parse
 
+version = '1.1.dev0'
 
 def read(*pathnames):
     return open(os.path.join(os.path.dirname(__file__), *pathnames)).read()
 
 setup(name='collective.superfish',
-      version='0.6',
+      version=version,
       description="A suckerfish/superfish integration into plone",
       long_description='\n'.join([
         read('README.rst'),
