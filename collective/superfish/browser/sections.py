@@ -1,19 +1,14 @@
 # -*- coding: utf-8 -*-
-from zope.component import getMultiAdapter
-from cStringIO import StringIO
-
-from Acquisition import aq_inner
 from AccessControl import getSecurityManager
-
-from plone.app.layout.viewlets import common
-from plone.app.layout.navigation.navtree import buildFolderTree
-
-from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
+from Acquisition import aq_inner
 from Products.CMFCore.utils import getToolByName
-from Products.CMFPlone.utils import safe_unicode
 from Products.CMFPlone.browser.navtree import SitemapQueryBuilder
-
-from plone.memoize import ram
+from Products.CMFPlone.utils import safe_unicode
+from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
+from cStringIO import StringIO
+from plone.app.layout.navigation.navtree import buildFolderTree
+from plone.app.layout.viewlets import common
+from zope.component import getMultiAdapter
 from zope.i18n import translate
 
 
@@ -87,9 +82,10 @@ class SuperFishViewlet(common.ViewletBase):
 
     # this template is used to generate a single menu item.
     _menu_item = u"""
-    <li id="%(menu_id)s-%(id)s"%(classnames)s><a href="%(url)s" title="%(description)s">
-            %(title)s
-        </a>%(submenu)s </li>"""
+    <li id="%(menu_id)s-%(id)s"%(classnames)s
+      ><a href="%(url)s" title="%(description)s">
+        %(title)s
+    </a>%(submenu)s </li>"""
 
     # this template is used to generate a menu container
     _submenu_item = u"""\n<ul%(id)s class="%(classname)s">%(menuitems)s</ul>"""
@@ -141,10 +137,12 @@ class SuperFishViewlet(common.ViewletBase):
         # to mark currentItems (or GlobalSectionsViewlet in
         # plone.app.layout.viewlets.common)
         for actionInfo in actions:
-            self.data['children'].insert(0,
+            self.data['children'].insert(
+                0,
                 {'item': VirtualCatalogBrain(actionInfo),
                  'depth': 1, 'children': [],
-                 'currentParent': False, 'currentItem': False})
+                 'currentParent': False, 'currentItem': False}
+            )
 
     def html_escape(self, text):
         """Produce entities within text."""
@@ -157,7 +155,7 @@ class SuperFishViewlet(common.ViewletBase):
 
         def submenu(items, menu_id=None, menu_level=0, menu_classnames=''):
             # unsure this is needed any more...
-            #if self.menu_depth>0 and menu_level>self.menu_depth:
+            # if self.menu_depth>0 and menu_level>self.menu_depth:
             #    # finish if we reach the maximum level
             #    return
 
@@ -165,8 +163,7 @@ class SuperFishViewlet(common.ViewletBase):
             s = []
 
             # exclude nav items
-            items = [item for item in items
-                        if not item['item'].exclude_from_nav]
+            items = [item for item in items if not item['item'].exclude_from_nav]  # noqa
 
             if not items:
                 return ''
@@ -179,16 +176,18 @@ class SuperFishViewlet(common.ViewletBase):
                 s.append(menuitem(item, first, last, menu_level))
 
             return self._submenu_item % dict(
-                        id=menu_id and u" id=\"%s\"" % (menu_id) or u"",
-                        menuitems=u"".join(s),
-                        classname=u"navTreeLevel%d %s" % (
-                            menu_level, menu_classnames))
+                id=menu_id and u" id=\"%s\"" % (menu_id) or u"",
+                menuitems=u"".join(s),
+                classname=u"navTreeLevel%d %s" % (
+                    menu_level, menu_classnames))
 
         def menuitem(item, first=False, last=False, menu_level=0):
             classes = []
 
-            if first: classes.append('firstItem')
-            if last: classes.append('lastItem')
+            if first:
+                classes.append('firstItem')
+            if last:
+                classes.append('lastItem')
             if item['currentParent']:
                 classes.append('navTreeItemInPath')
             if item['currentItem']:
@@ -215,15 +214,15 @@ class SuperFishViewlet(common.ViewletBase):
                 title=self.html_escape(title),
                 description=self.html_escape(desc),
                 url=item['item'].getURL(),
-                classnames=len(classes) and
-                    u' class="%s"' % (" ".join(classes)) or u"",
+                classnames=len(classes) and u' class="%s"' % (" ".join(classes)) or u"",  # noqa
                 submenu=submenu(item['children'],
                                 menu_level=menu_level + 1) or u"")
 
         if self.data:
-            return submenu(self.data['children'], menu_id=self.menu_id,
-                                                  menu_classnames=u"sf-menu")
+            return submenu(self.data['children'],
+                           menu_id=self.menu_id,
+                           menu_classnames=u"sf-menu")
 
-    #@ram.cache(_render_sections_cachekey)
+    # @ram.cache(_render_sections_cachekey)
     def render(self):
         return self.index()
