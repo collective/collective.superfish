@@ -4,11 +4,14 @@ History
 1.1 (unreleased)
 ----------------
 
+- Update superfish.js from 1.7.3 to 1.7.5,
+  and hoverIntend from r7 (1.7.0) to 1.8.1
+  [fRiSi]
+  
 - Don't break JS when jQuery is undefined. This happened for eg. on
   wildcard.foldercontents folder_content view
   [petschki]
-
-
+  
 1.0 - 2014-05-08
 ----------------
 
