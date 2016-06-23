@@ -1,7 +1,7 @@
 History
 =======
 
-1.1 (unreleased)
+1.1 (2016-06-23)
 ----------------
 
 - Update superfish.js from 1.7.3 to 1.7.5,
