@@ -18,7 +18,7 @@ and JavaScript which degrades gracefully if JavaScript is not available.
 How do i use it?
 ================
 
-This package behaves as a "drop-in" replacement for `plone.global_sections`.
+This package behaves as a "drop-in" replacement for ``plone.global_sections``.
 Just install it :)
 
 
@@ -26,13 +26,11 @@ Customization
 =============
 
 Use Plone's Configuration Registry to change Superfish settings.
-Filter for prefix `ISuperfishSettings` to see available options.
+Filter for prefix ``ISuperfishSettings`` to see available options.
 
 
 Do not show arrows
 ------------------
-
-*XXX: Put this in ISuperfishSettings*
 
 To not show the arrows for menuitems with subitems,
 customize the Javascript initialization::
@@ -52,7 +50,7 @@ CSS Styles
 By using superfish.css you should have everyting in place to get a working
 superfish navigation.
 
-Specific fixes and colors for plone's `Barceloneta Theme` can be found in
+Specific fixes and colors for plone's ``Barceloneta Theme`` can be found in
 superfish-plone.css (you might deactivate these styles for your custom theme
 layer to not need to override these styles)
 

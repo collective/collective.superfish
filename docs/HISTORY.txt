@@ -10,7 +10,7 @@ History
   [petschki]
 - add uninstall profile
   [petschki]
-- update superfish resources to 1.7.9
+- update superfish resources to 1.7.9 and hoverIntent to 1.9.0
   [petschki]
 
 1.1 (2016-06-23)
