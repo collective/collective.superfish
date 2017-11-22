@@ -51,7 +51,7 @@ By using superfish.css you should have everyting in place to get a working
 superfish navigation.
 
 Specific fixes and colors for plone's ``Barceloneta Theme`` can be found in
-superfish-plone.css (you might deactivate these styles for your custom theme
+``superfish-plone.css`` (you might deactivate these styles for your custom theme
 layer to not need to override these styles)
 
 You might want to have a look at the examples provided in the
