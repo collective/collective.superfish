@@ -6,9 +6,12 @@ from Products.CMFPlone.browser.navtree import SitemapQueryBuilder
 from Products.CMFPlone.utils import safe_unicode
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from cStringIO import StringIO
+from collective.superfish.interfaces import ISuperfishSettings
 from plone.app.layout.navigation.navtree import buildFolderTree
 from plone.app.layout.viewlets import common
+from plone.registry.interfaces import IRegistry
 from zope.component import getMultiAdapter
+from zope.component import queryUtility
 from zope.i18n import translate
 
 
@@ -68,7 +71,6 @@ class SuperFishViewlet(common.ViewletBase):
     # monkey patch this if you want to use collective.superfish together with
     # global_sections, need another start level or menu depth.
     menu_id = 'portal-globalnav'
-    menu_depth = 2
 
     # See http://wiki.python.org/moin/EscapingHtml
     html_escape_table = {
@@ -78,7 +80,6 @@ class SuperFishViewlet(common.ViewletBase):
         ">": "&gt;",
         "<": "&lt;",
     }
-    ADD_PORTAL_TABS = False
 
     # this template is used to generate a single menu item.
     _menu_item = u"""
@@ -101,12 +102,15 @@ class SuperFishViewlet(common.ViewletBase):
         self.current_url = context_state.current_page_url()
         self.site_url = portal_state.portal_url()
         self.navigation_root_path = portal_state.navigation_root_path()
+        registry = queryUtility(IRegistry)
+        self.settings = registry.forInterface(
+            ISuperfishSettings, prefix='superfish', check=False)
 
     def _build_navtree(self):
         # we generate our navigation out of the sitemap. so we can use the
         # highspeed navtree generation, and use it's caching features too.
         query = SuperFishQueryBuilder(self.context)()
-        query['path']['depth'] = self.menu_depth
+        query['path']['depth'] = self.settings.menu_depth
         query['path']['query'] = self.navigation_root_path
 
         # no special strategy needed, so i kicked the INavtreeStrategy lookup.
@@ -115,7 +119,7 @@ class SuperFishViewlet(common.ViewletBase):
     def update(self):
         self.data = self._build_navtree()
 
-        if self.ADD_PORTAL_TABS:
+        if self.settings.add_portal_tabs:
             self._addActionsToData()
 
     def _actions(self):
@@ -182,7 +186,7 @@ class SuperFishViewlet(common.ViewletBase):
                     menu_level, menu_classnames))
 
         def menuitem(item, first=False, last=False, menu_level=0):
-            classes = []
+            classes = ['']
 
             if first:
                 classes.append('firstItem')
@@ -219,9 +223,10 @@ class SuperFishViewlet(common.ViewletBase):
                                 menu_level=menu_level + 1) or u"")
 
         if self.data:
-            return submenu(self.data['children'],
-                           menu_id=self.menu_id,
-                           menu_classnames=u"sf-menu")
+            return submenu(
+                self.data['children'],
+                menu_id=self.menu_id,
+                menu_classnames=u"plone-nav plone-navbar-nav sf-menu")
 
     # @ram.cache(_render_sections_cachekey)
     def render(self):

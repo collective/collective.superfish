@@ -152,3 +152,6 @@ define('superfish-hoverIntent', [
         return this.on({'mouseenter.hoverIntent':handleHover,'mouseleave.hoverIntent':handleHover}, cfg.selector);
     };
 });
+
+define("/Volumes/WORKSPACE/plone5/src/collective.superfish/collective/superfish/browser/static/hoverIntent.js", function(){});
+

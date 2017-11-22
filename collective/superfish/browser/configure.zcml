@@ -1,10 +1,12 @@
 <configure
     xmlns="http://namespaces.zope.org/zope"
     xmlns:browser="http://namespaces.zope.org/browser"
+    xmlns:plone="http://namespaces.plone.org/plone"
     i18n_domain="collective.superfish">
 
-    <browser:resourceDirectory
+    <plone:static
         name="collective.superfish.static"
+        type="plone"
         directory="static"
         />
 
@@ -12,7 +14,7 @@
 
     <browser:viewlet
         name="collective.superfish"
-        manager="plone.app.layout.viewlets.interfaces.IPortalHeader"
+        manager="plone.app.layout.viewlets.interfaces.IMainNavigation"
         class=".sections.SuperFishViewlet"
         permission="zope2.View"
         layer=".interfaces.ISuperfishLayer"
