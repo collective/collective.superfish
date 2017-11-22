@@ -2,7 +2,7 @@
 <nav id="portal-globalnav-wrapper" class="plone-navbar">
     <div class="container">
       <div class="plone-navbar-header">
-        <button type="button" class="plone-navbar-toggle" data-toggle="collapse" data-target="#portal-globalnav-collapse">
+        <button type="button" class="plone-navbar-toggle collapsed" data-toggle="collapse" data-target="#portal-globalnav-collapse">
           <span class="sr-only">Toggle navigation</span>
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
