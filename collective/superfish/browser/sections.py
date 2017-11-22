@@ -186,7 +186,7 @@ class SuperFishViewlet(common.ViewletBase):
                     menu_level, menu_classnames))
 
         def menuitem(item, first=False, last=False, menu_level=0):
-            classes = ['']
+            classes = []
 
             if first:
                 classes.append('firstItem')
