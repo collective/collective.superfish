@@ -1,9 +1,7 @@
 /* initialize plugins */
 require([
-  'jquery',
-  'superfish',
+    // IMPORTANT: this is the name of the pattern registered in plone.resourceregistry
+    'superfish-pattern',
 ], function($){
-    $(document).ready(function(){
-        $('ul.sf-menu').superfish();
-    });
+    'use strict';
 });

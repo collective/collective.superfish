@@ -89,7 +89,7 @@ class SuperFishViewlet(common.ViewletBase):
     </a>%(submenu)s </li>"""
 
     # this template is used to generate a menu container
-    _submenu_item = u"""\n<ul%(id)s class="%(classname)s">%(menuitems)s</ul>"""
+    _submenu_item = u"""\n<ul%(id)s class="%(classname)s" data-pat-superfish='%(patternoptions)s'>%(menuitems)s</ul>"""  # noqa
 
     def __init__(self, *args):
         super(SuperFishViewlet, self).__init__(*args)
@@ -157,7 +157,8 @@ class SuperFishViewlet(common.ViewletBase):
         """We do not want to use the template-code any more.
            Python code should speedup rendering."""
 
-        def submenu(items, menu_id=None, menu_level=0, menu_classnames=''):
+        def submenu(items, menu_id=None, menu_level=0, menu_classnames='',
+                    patternoptions=''):
             # unsure this is needed any more...
             # if self.menu_depth>0 and menu_level>self.menu_depth:
             #    # finish if we reach the maximum level
@@ -182,8 +183,8 @@ class SuperFishViewlet(common.ViewletBase):
             return self._submenu_item % dict(
                 id=menu_id and u" id=\"%s\"" % (menu_id) or u"",
                 menuitems=u"".join(s),
-                classname=u"navTreeLevel%d %s" % (
-                    menu_level, menu_classnames))
+                classname=u"navTreeLevel%d %s" % (menu_level, menu_classnames),
+                patternoptions=patternoptions)
 
         def menuitem(item, first=False, last=False, menu_level=0):
             classes = []
@@ -226,7 +227,8 @@ class SuperFishViewlet(common.ViewletBase):
             return submenu(
                 self.data['children'],
                 menu_id=self.menu_id,
-                menu_classnames=u"plone-nav plone-navbar-nav sf-menu")
+                menu_classnames=u"plone-nav plone-navbar-nav pat-superfish sf-menu",  # noqa
+                patternoptions=self.settings.superfish_options)
 
     # @ram.cache(_render_sections_cachekey)
     def render(self):

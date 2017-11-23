@@ -15,3 +15,7 @@ class ISuperfishSettings(Interface):
         title=u'Menu depth',
         default=2,
     )
+
+    superfish_options = schema.Text(
+        title=u'Options for Superfish call',
+    )

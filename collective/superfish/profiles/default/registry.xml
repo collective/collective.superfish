@@ -1,8 +1,10 @@
 <?xml version="1.0"?>
 <registry>
 
-    <records interface='collective.superfish.interfaces.ISuperfishSettings'
-             prefix='superfish'>
+    <records interface='collective.superfish.interfaces.ISuperfishSettings' prefix='superfish'>
+        <value key="add_portal_tabs">True</value>
+        <value key="menu_depth">2</value>
+        <value key="superfish_options">{ "delay": 800, "cssArrows": true }</value>
     </records>
 
     <records prefix="plone.resources/superfish-hoverIntent"
@@ -18,12 +20,17 @@
         </value>
     </records>
 
+    <records prefix="plone.resources/superfish-pattern"
+             interface='Products.CMFPlone.interfaces.IResourceRegistry'>
+        <value key="js">++plone++collective.superfish.static/pattern.js</value>
+        <value key="css">
+            <element>++plone++collective.superfish.static/pattern.less</element>
+        </value>
+    </records>
+
     <records prefix="plone.resources/bundle-superfish"
              interface='Products.CMFPlone.interfaces.IResourceRegistry'>
         <value key="js">++plone++collective.superfish.static/bundle.js</value>
-        <value key="css">
-            <element>++plone++collective.superfish.static/superfish-plone.less</element>
-        </value>
     </records>
 
     <records prefix="plone.bundles/superfish"
@@ -31,6 +38,7 @@
       <value key="resources">
         <element>superfish-hoverIntent</element>
         <element>superfish</element>
+        <element>superfish-pattern</element>
         <element>bundle-superfish</element>
       </value>
       <value key="merge_with">default</value>

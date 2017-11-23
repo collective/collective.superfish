@@ -15,8 +15,8 @@ and JavaScript which degrades gracefully if JavaScript is not available.
 .. _`jQuery Superfish plugin`: https://superfish.joelbirch.co/
 
 
-How do i use it?
-================
+How do you use it?
+==================
 
 This package behaves as a "drop-in" replacement for ``plone.global_sections``.
 Just install it :)
@@ -28,34 +28,14 @@ Customization
 Use Plone's Configuration Registry to change Superfish settings.
 Filter for prefix ``ISuperfishSettings`` to see available options.
 
+For integrators you can set the following records in ``registry.xml`` of your theme profile::
 
-Do not show arrows
-------------------
-
-To not show the arrows for menuitems with subitems,
-customize the Javascript initialization::
-
-
-    jQuery('ul.sf-menu').superfish({
-        cssArrows: false
-    });
+    <records interface='collective.superfish.interfaces.ISuperfishSettings' prefix='superfish'>
+        <value key="add_portal_tabs">True</value>
+        <value key="menu_depth">2</value>
+        <value key="superfish_options">{ "delay": 800, "cssArrows": true }</value>
+    </records>
 
 See https://superfish.joelbirch.co/options/ for a complete
-list of available options.
-
-
-CSS Styles
-----------
-
-By using superfish.css you should have everyting in place to get a working
-superfish navigation.
-
-Specific fixes and colors for plone's ``Barceloneta Theme`` can be found in
-``superfish-plone.css`` (you might deactivate these styles for your custom theme
-layer to not need to override these styles)
-
-You might want to have a look at the examples provided in the
-`superfish download <https://github.com/joeldbirch/superfish/releases>`_
-
-eg: https://github.com/joeldbirch/superfish/tree/v1.7.9/examples
+list of available ``superfish_options``.
 
