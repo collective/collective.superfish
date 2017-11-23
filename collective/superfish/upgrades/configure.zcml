@@ -28,10 +28,6 @@
     destination="5"
     profile="collective.superfish:default">
 
-      <gs:upgradeStep
-          title="import registry"
-          handler=".to_5" />
-
       <gs:upgradeDepends
         title="remove unneeded resources"
         import_profile="collective.superfish.upgrades:2_to_5"

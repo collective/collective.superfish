@@ -13,8 +13,3 @@ def _cookResources(portal):
 def to_2(context):
     portal = getToolByName(context, 'portal_url').getPortalObject()
     _cookResources(portal)
-
-
-def to_5(context):
-    setup = getToolByName(context, 'portal_setup')
-    setup.runImportStepFromProfile(PROFILE_ID, 'plone.app.registry')

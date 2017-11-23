@@ -57,5 +57,5 @@ layer to not need to override these styles)
 You might want to have a look at the examples provided in the
 `superfish download <https://github.com/joeldbirch/superfish/releases>`_
 
-eg: https://github.com/joeldbirch/superfish/tree/1.7.4/examples
+eg: https://github.com/joeldbirch/superfish/tree/v1.7.9/examples
 
