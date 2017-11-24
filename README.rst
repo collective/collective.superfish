@@ -2,8 +2,6 @@
 collective.superfish
 ====================
 
-.. contents::
-
 What is it?
 ===========
 
@@ -13,6 +11,14 @@ Superfish is a really nice solution for dropdown menus using css, valid xhtml
 and JavaScript which degrades gracefully if JavaScript is not available.
 
 .. _`jQuery Superfish plugin`: https://superfish.joelbirch.co/
+
+
+Which Version is for me?
+========================
+
+Since Version 2.0 ``collective.superfish`` targets Plone 5 only.
+
+If you want to use it on Plone < 5 then stay to the 1.x versions.
 
 
 How do you use it?
