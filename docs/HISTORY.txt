@@ -1,11 +1,17 @@
 History
 =======
 
-1.1.1 (unreleased)
+2.0a1 (unreleased)
 ------------------
 
-- Nothing changed yet.
-
+- migrate superfish resources to Plone 5 resource registry (see upgrade step)
+  [petschki]
+- behave as "drop-in" replacement for global_sections
+  [petschki]
+- add uninstall profile
+  [petschki]
+- update superfish resources to 1.7.9 and hoverIntent to 1.9.0
+  [petschki]
 
 1.1 (2016-06-23)
 ----------------
@@ -13,11 +19,11 @@ History
 - Update superfish.js from 1.7.3 to 1.7.5,
   and hoverIntend from r7 (1.7.0) to 1.8.1
   [fRiSi]
-  
+
 - Don't break JS when jQuery is undefined. This happened for eg. on
   wildcard.foldercontents folder_content view
   [petschki]
-  
+
 1.0 - 2014-05-08
 ----------------
 

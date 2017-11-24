@@ -6,16 +6,18 @@ Thanks
 - Dan Webb
 - Joel Birch
 - Harald Friessnegger (fRiSi)
+- Peter Mathis (petschki)
+
 
 Links
 =====
 
 
 - Superfish
-  http://users.tpg.com.au/j_birch/plugins/superfish
+  https://superfish.joelbirch.co
 
 - hoverIntent
-  http://cherne.net/brian/resources/jquery.hoverIntent.html
+  https://github.com/briancherne/jquery-hoverIntent
 
 - Suckerfish Dropdowns
   http://www.alistapart.com/articles/dropdowns

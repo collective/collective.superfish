@@ -278,3 +278,6 @@ define('superfish', [
 	};
 
 });
+
+define("/Volumes/WORKSPACE/plone5/src/collective.superfish/collective/superfish/browser/static/superfish.js", function(){});
+

@@ -1,6 +1,5 @@
 from Products.CMFPlone.utils import getToolByName
 
-
 PROFILE_ID = 'profile-collective.superfish:default'
 
 

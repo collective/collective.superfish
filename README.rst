@@ -2,8 +2,6 @@
 collective.superfish
 ====================
 
-.. contents::
-
 What is it?
 ===========
 
@@ -12,87 +10,38 @@ collective.superfish integrates the `jQuery Superfish plugin`_ into Plone.
 Superfish is a really nice solution for dropdown menus using css, valid xhtml
 and JavaScript which degrades gracefully if JavaScript is not available.
 
-.. _`jQuery Superfish plugin`: http://users.tpg.com.au/j_birch/plugins/superfish/
+.. _`jQuery Superfish plugin`: https://superfish.joelbirch.co/
 
 
-.. ATTENTION::
+Which Version is for me?
+========================
 
-    Dropdown currently does not work on iOS devices.
-    The `hoverintent.js` requires jQuery 1.9.1+ and Plone 4.3.3 ships with 1.7.2
+Since Version 2.0 ``collective.superfish`` targets Plone 5 only.
 
-    see https://github.com/collective/collective.superfish/issues/1 for
-    workarounds or use 0.X releases
+If you want to use it on Plone < 5 then stay to the 1.x versions.
 
-How do i use it?
-================
 
-Hide `plone.global_sections` and replace it with `collective.superfish`
-in viewlets.xml somehow like this::
+How do you use it?
+==================
 
-    <!-- superfish: use superfish instead of global_sections -->
-    <hidden manager="plone.portalheader" skinname="MySkin">
-        <viewlet name="plone.global_sections" />
-    </hidden>
-
-    <order manager="plone.portalheader" skinname="MySkin">
-        <viewlet name="collective.superfish" insert-after="plone.global_sections" />
-    </order>
+This package behaves as a "drop-in" replacement for ``plone.global_sections``.
+Just install it :)
 
 
 Customization
 =============
 
+Use Plone's Configuration Registry to change Superfish settings.
+Filter for prefix ``ISuperfishSettings`` to see available options.
 
-Add portal_actions
-------------------
+For integrators you can set the following records in ``registry.xml`` of your theme profile::
 
-By default, `collecive.superfish` does not include portal_actions in the menu.
-To activate them, subclass the viewlet::
+    <records interface='collective.superfish.interfaces.ISuperfishSettings' prefix='superfish'>
+        <value key="add_portal_tabs">True</value>
+        <value key="menu_depth">2</value>
+        <value key="superfish_options">{ "delay": 800, "cssArrows": true }</value>
+    </records>
 
-    from collective.superfish.browser.sections import SuperFishViewlet as SuperFishBase
-
-    class SuperFishViewlet(SuperFishBase):
-
-        ADD_PORTAL_TABS = True
-
-and register it for your skin::
-
-    <browser:viewlet
-        name="collective.superfish"
-        manager="plone.app.layout.viewlets.interfaces.IPortalHeader"
-        class=".viewlets.SuperFishViewlet"
-        permission="zope2.View"
-        layer=".interfaces.IThemeSpecific"/>
-
-
-Do not show arrows
-------------------
-
-To not show the arrows for menuitems with subitems,
-customize the Javascript initialization::
-
-
-    jQuery('ul.sf-menu').superfish({
-        cssArrows: false
-    });
-
-See http://users.tpg.com.au/j_birch/plugins/superfish/options/ for a complete
-list of available options.
-
-
-CSS Styles
-----------
-
-By using superfish.css you should have everyting in place to get a working
-superfish navigation.
-
-Specific fixes and colors for plone's `Sunburst Theme` can be found in
-superfish-plone.css (you might deactivate these styles for your custom theme
-layer to not need to override these styles)
-
-You might want to have a look at the examples provided in the
-`superfish download <https://github.com/joeldbirch/superfish/archive/1.7.4.zip>`_
-
-eg: https://github.com/joeldbirch/superfish/tree/1.7.4/examples
-
+See https://superfish.joelbirch.co/options/ for a complete
+list of available ``superfish_options``.
 

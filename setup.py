@@ -11,7 +11,7 @@ def read(*pathnames):
 
 setup(
     name='collective.superfish',
-    version='1.1.1.dev0',
+    version='2.0a1.dev0',
     description="A suckerfish/superfish integration into plone",
     long_description='\n'.join([
         read('README.rst'),
@@ -23,13 +23,14 @@ setup(
     classifiers=[
         "Environment :: Web Environment",
         "Framework :: Plone",
-        "Framework :: Plone :: 4.3",
+        "Framework :: Plone :: 5.0",
+        "Framework :: Plone :: 5.1",
         "Programming Language :: Python",
         "Programming Language :: Python :: 2.7",
     ],
     keywords='navigation suckerfish superfish jquery dropdown',
-    author='Daniel Widerin',
-    author_email='daniel.widerin@kombinat.at',
+    author='Peter Mathis',
+    author_email='peter.mathis@kombinat.at',
     url='http://svn.plone.org/svn/collective/collective.superfish',
     license='GPL',
     packages=find_packages(exclude=['ez_setup']),
