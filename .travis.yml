@@ -19,6 +19,7 @@ before_install:
   - pip install -r requirements.txt
 install:
   - cp test-$PLONE_VERSION.cfg buildout.cfg
+  - buildout annotate
   - buildout -t 10
 script:
   - bin/code-analysis
