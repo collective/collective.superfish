@@ -4,6 +4,8 @@ from setuptools import setup
 
 import os
 
+version = '2.0a2.dev0'
+
 
 def read(*pathnames):
     return open(os.path.join(os.path.dirname(__file__), *pathnames)).read()
@@ -11,7 +13,7 @@ def read(*pathnames):
 
 setup(
     name='collective.superfish',
-    version='2.0a2.dev0',
+    version=version,
     description="A suckerfish/superfish integration into plone",
     long_description='\n'.join([
         read('README.rst'),
@@ -25,6 +27,7 @@ setup(
         "Framework :: Plone",
         "Framework :: Plone :: 5.0",
         "Framework :: Plone :: 5.1",
+        "Framework :: Plone :: 5.2",
         "Programming Language :: Python",
         "Programming Language :: Python :: 2.7",
     ],
@@ -41,6 +44,10 @@ setup(
         'setuptools',
         # -*- Extra requirements: -*-
     ],
+    extras_require={'test': [
+        'plone.app.testing[robot]',
+        'plone.app.robotframework',
+    ]},
     entry_points="""
     [z3c.autoinclude.plugin]
     target = plone
