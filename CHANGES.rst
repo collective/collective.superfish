@@ -4,7 +4,7 @@ History
 2.0a2 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- make final release.
 
 
 2.0a1 (2017-11-24)

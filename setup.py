@@ -16,8 +16,8 @@ setup(
     long_description='\n'.join([
         read('README.rst'),
         read('docs', 'TODO.txt'),
-        read('docs', 'HISTORY.txt'),
         read('docs', 'THANKS.txt'),
+        read('CHANGES.rst'),
     ]),
     # Get more from http://pypi.python.org/pypi?%3Aaction=list_classifiers
     classifiers=[
