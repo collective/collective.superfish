@@ -11,7 +11,7 @@ def read(*pathnames):
 
 setup(
     name='collective.superfish',
-    version='2.0',
+    version='2.1.dev0',
     description="A suckerfish/superfish integration into plone",
     long_description='\n'.join([
         read('README.rst'),
