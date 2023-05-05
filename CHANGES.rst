@@ -1,7 +1,7 @@
 History
 =======
 
-2.1 (unreleased)
+2.1 (2023-05-05)
 ----------------
 
 - Python 3 support.
