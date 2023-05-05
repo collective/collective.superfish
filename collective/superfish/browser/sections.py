@@ -1,36 +1,32 @@
 # -*- coding: utf-8 -*-
 from AccessControl import getSecurityManager
 from Acquisition import aq_inner
-from Products.CMFCore.utils import getToolByName
-from Products.CMFPlone.browser.navtree import SitemapQueryBuilder
-from Products.CMFPlone.utils import safe_unicode
-from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
-from cStringIO import StringIO
 from collective.superfish.interfaces import ISuperfishSettings
 from plone.app.layout.navigation.navtree import buildFolderTree
 from plone.app.layout.viewlets import common
 from plone.registry.interfaces import IRegistry
+from Products.CMFCore.utils import getToolByName
+from Products.CMFPlone.browser.navtree import SitemapQueryBuilder
+from Products.CMFPlone.utils import safe_unicode
+from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from zope.component import getMultiAdapter
 from zope.component import queryUtility
 from zope.i18n import translate
 
 
 def _render_sections_cachekey(fun, self):
-    key = StringIO()
-    print >> key, self.__class__
-    print >> key, getToolByName(aq_inner(self.context), 'portal_url')()
-    print >> key, self.request.get('LANGUAGE', 'de')
-
     catalog = getToolByName(self.context, 'portal_catalog')
     counter = catalog.getCounter()
-    print >> key, counter
-    print >> key, aq_inner(self.context).getPhysicalPath()
-
     user = getSecurityManager().getUser()
     roles = user.getRolesInContext(aq_inner(self.context))
-    print >> key, roles
-
-    return key.getvalue()
+    return "".join([
+        self.__class__,
+        getToolByName(aq_inner(self.context), 'portal_url')(),
+        self.request.get('LANGUAGE', 'de'),
+        counter,
+        aq_inner(self.context).getPhysicalPath(),
+        roles,
+    ])
 
 
 class VirtualCatalogBrain(object):

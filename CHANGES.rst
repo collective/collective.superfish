@@ -4,7 +4,7 @@ History
 2.1 (unreleased)
 ----------------
 
-- Nothing changed yet.
+- Python 3 support.
 
 
 2.0 (2018-08-02)
